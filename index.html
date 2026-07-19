@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gains | Elite Fitness</title>
+    <title>Gains | Elite Fitness [Animated]</title>
 
     <!-- Google Fonts: Montserrat for a bold, modern look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,6 +30,63 @@
             --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
+        /* --- Animations & Keyframes --- */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Animation Utility Classes */
+        .to-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s, transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .to-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Pre-set animations */
+        .fade-in { animation: fadeIn 1s ease forwards; }
+        .fade-in-up { animation: fadeInUp 0.8s ease forwards; }
+        .fade-in-down { animation: fadeInDown 0.6s ease forwards; }
+        .slide-in-left { animation: slideInLeft 0.8s ease forwards; }
+        .slide-in-right { animation: slideInRight 0.8s ease forwards; }
+        .scale-in { animation: scaleIn 0.8s ease forwards; }
+
+        /* Stagger delays */
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+
         /* --- Reset & Base Styles --- */
         * {
             margin: 0;
@@ -44,6 +101,7 @@
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
+            animation: fadeIn 1s ease; /* Overall body fade on load */
         }
 
         a { text-decoration: none; color: inherit; }
@@ -126,6 +184,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            animation: fadeInDown 0.6s ease;
         }
 
         .logo i {
@@ -136,6 +195,7 @@
             display: flex;
             gap: 30px;
             align-items: center;
+            animation: fadeInDown 0.8s ease;
         }
 
         .nav-links a {
@@ -177,6 +237,8 @@
             letter-spacing: 2px;
             margin-bottom: 20px;
             border: 1px solid rgba(255, 78, 62, 0.3);
+            animation: fadeInUp 0.8s ease forwards 0.2s;
+            opacity: 0; /* Initially hidden */
         }
 
         .hero h1 {
@@ -185,6 +247,8 @@
             line-height: 1.1;
             margin-bottom: 25px;
             text-transform: uppercase;
+            animation: fadeInUp 1s ease forwards 0.4s;
+            opacity: 0;
         }
 
         .hero p {
@@ -192,6 +256,13 @@
             color: var(--text-muted);
             margin-bottom: 40px;
             max-width: 500px;
+            animation: fadeInUp 1s ease forwards 0.6s;
+            opacity: 0;
+        }
+
+        .hero .btn-hero {
+            animation: scaleIn 0.8s ease forwards 0.8s;
+            opacity: 0;
         }
 
         /* --- Services Section --- */
@@ -210,6 +281,11 @@
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            opacity: 0;
+        }
+
+        .service-card.start-scale {
+            animation: scaleIn 0.8s ease forwards;
         }
 
         .service-card::before {
@@ -236,6 +312,11 @@
             font-size: 3rem;
             color: var(--primary);
             margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .service-card:hover i {
+            transform: scale(1.1);
         }
 
         .service-card h3 {
@@ -266,6 +347,11 @@
             border-radius: 12px;
             overflow: hidden;
             position: relative;
+            opacity: 0;
+        }
+
+        .about-img.start-slide {
+            animation: slideInLeft 0.8s ease forwards;
         }
 
         .about-img::after {
@@ -276,6 +362,14 @@
             border-radius: 12px;
             transform: translate(15px, 15px);
             z-index: -1;
+        }
+
+        .about-content {
+            opacity: 0;
+        }
+
+        .about-content.start-reveal {
+            animation: fadeInUp 0.8s ease forwards;
         }
 
         .about-content h2 {
@@ -303,6 +397,11 @@
             border-radius: 12px;
             overflow: hidden;
             cursor: pointer;
+            opacity: 0;
+        }
+
+        .category-card.start-scale {
+            animation: scaleIn 0.8s ease forwards;
         }
 
         .category-card img {
@@ -368,6 +467,14 @@
             text-align: center;
         }
 
+        .stat-item {
+            opacity: 0;
+        }
+
+        .stat-item.start-count {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
         .stat-item h4 {
             font-size: 3.5rem;
             font-weight: 900;
@@ -409,6 +516,17 @@
             align-items: flex-start;
             gap: 20px;
             border: 1px solid rgba(255,255,255,0.03);
+            transition: var(--transition);
+            opacity: 0;
+        }
+
+        .contact-card.start-reveal {
+            animation: slideInLeft 0.8s ease forwards;
+        }
+
+        .contact-card:hover {
+            transform: translateX(5px);
+            border-color: rgba(255, 78, 62, 0.2);
         }
 
         .contact-card i {
@@ -417,6 +535,7 @@
             background: rgba(255, 78, 62, 0.1);
             padding: 15px;
             border-radius: 8px;
+            transition: var(--transition);
         }
 
         .contact-card h4 {
@@ -435,10 +554,20 @@
             padding: 40px;
             border-radius: 12px;
             border: 1px solid rgba(255,255,255,0.03);
+            opacity: 0;
+        }
+
+        .contact-form.start-reveal {
+            animation: slideInRight 0.8s ease forwards;
         }
 
         .form-group {
             margin-bottom: 20px;
+            opacity: 0;
+        }
+
+        .form-group.start-fade {
+            animation: fadeInDown 0.6s ease forwards;
         }
 
         .form-control {
@@ -513,7 +642,7 @@
 
         @media (max-width: 768px) {
             .nav-links {
-                display: none; /* In a real scenario, implement a hamburger menu here */
+                display: none;
             }
             .hero h1 {
                 font-size: 2.5rem;
@@ -556,13 +685,13 @@
                     <span class="badge">The Best Fitness Club</span>
                     <h1>Achieve The <span>Impossible</span></h1>
                     <p>Because ordinary was never your style. Push your limits, redefine your boundaries, and build the ultimate version of yourself.</p>
-                    <button class="btn">Start Your Journey</button>
+                    <button class="btn btn-hero">Start Your Journey</button>
                 </div>
             </div>
         </section>
 
         <!-- Services Section -->
-        <section id="services" class="section-padding">
+        <section id="services" class="section-padding to-reveal">
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">Our <span>Services</span></h2>
@@ -570,17 +699,17 @@
                 </div>
                 
                 <div class="services-grid">
-                    <div class="service-card">
+                    <div class="service-card delay-1">
                         <i class="fa-solid fa-dumbbell"></i>
                         <h3>Elite Equipment</h3>
                         <p>Train with industry-leading machinery and free weights curated for serious athletes.</p>
                     </div>
-                    <div class="service-card">
+                    <div class="service-card delay-2">
                         <i class="fa-solid fa-layer-group"></i>
                         <h3>Premium Space</h3>
                         <p>A sprawling, expertly designed facility offering dedicated zones for all training styles.</p>
                     </div>
-                    <div class="service-card">
+                    <div class="service-card delay-3">
                         <i class="fa-solid fa-user-astronaut"></i>
                         <h3>Expert Training</h3>
                         <p>Work 1-on-1 with certified coaches to build a plan that guarantees results.</p>
@@ -590,13 +719,13 @@
         </section>
 
         <!-- About Section -->
-        <section id="about" class="section-padding about">
+        <section id="about" class="section-padding about to-reveal">
             <div class="container">
                 <div class="about-wrapper">
-                    <div class="about-img">
+                    <div class="about-img to-slide-in-left">
                         <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=1000" alt="Gym Workout">
                     </div>
-                    <div class="about-content">
+                    <div class="about-content to-fade-in-up">
                         <h2>We Are <span>Gains</span></h2>
                         <p>Founded on the belief that everyone has untapped potential, Gains is more than just a gym—it's a community of dedicated individuals striving for greatness.</p>
                         <p>Our facility offers state-of-the-art equipment, unparalleled coaching, and an atmosphere that demands excellence. Whether you're stepping into a gym for the first time or prepping for a competition, we have your back.</p>
@@ -607,28 +736,28 @@
         </section>
 
         <!-- Categories / Training Section -->
-        <section id="training" class="section-padding">
+        <section id="training" class="section-padding to-reveal">
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">Training <span>Categories</span></h2>
                 </div>
                 
                 <div class="categories-grid">
-                    <div class="category-card">
+                    <div class="category-card delay-1">
                         <img src="https://images.unsplash.com/photo-1534304918237-727c65306648?q=80&w=1000" alt="Bodybuilding">
                         <div class="category-overlay">
                             <h3>Bodybuilding</h3>
                             <p>Sculpt & Define <i class="fa-solid fa-arrow-right"></i></p>
                         </div>
                     </div>
-                    <div class="category-card">
+                    <div class="category-card delay-2">
                         <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1000" alt="Power Lifting">
                         <div class="category-overlay">
                             <h3>Power Lifting</h3>
                             <p>Raw Strength <i class="fa-solid fa-arrow-right"></i></p>
                         </div>
                     </div>
-                    <div class="category-card">
+                    <div class="category-card delay-3">
                         <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?q=80&w=1000" alt="Calisthenics">
                         <div class="category-overlay">
                             <h3>Calisthenics</h3>
@@ -640,22 +769,22 @@
         </section>
 
         <!-- Stats Section -->
-        <section class="section-padding stats">
+        <section class="section-padding stats to-reveal">
             <div class="container">
                 <div class="stats-grid">
-                    <div class="stat-item">
+                    <div class="stat-item delay-1">
                         <h4>500+</h4>
                         <p>Active Members</p>
                     </div>
-                    <div class="stat-item">
+                    <div class="stat-item delay-2">
                         <h4>50+</h4>
                         <p>Pro Trainers</p>
                     </div>
-                    <div class="stat-item">
+                    <div class="stat-item delay-3">
                         <h4>70+</h4>
                         <p>Weekly Classes</p>
                     </div>
-                    <div class="stat-item">
+                    <div class="stat-item delay-4">
                         <h4>30+</h4>
                         <p>Training Programs</p>
                     </div>
@@ -664,7 +793,7 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="section-padding contact">
+        <section id="contact" class="section-padding contact to-reveal">
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">Get In <span>Touch</span></h2>
@@ -672,21 +801,21 @@
 
                 <div class="contact-grid">
                     <div class="contact-info">
-                        <div class="contact-card">
+                        <div class="contact-card to-slide-in-left delay-1">
                             <i class="fa-solid fa-location-dot"></i>
                             <div>
                                 <h4>Location</h4>
                                 <p>123 Iron Avenue, NY 10012</p>
                             </div>
                         </div>
-                        <div class="contact-card">
+                        <div class="contact-card to-slide-in-left delay-2">
                             <i class="fa-solid fa-phone"></i>
                             <div>
                                 <h4>Call Us</h4>
                                 <p>+1 (555) 987-6543</p>
                             </div>
                         </div>
-                        <div class="contact-card">
+                        <div class="contact-card to-slide-in-left delay-3">
                             <i class="fa-solid fa-envelope"></i>
                             <div>
                                 <h4>Email Us</h4>
@@ -695,15 +824,15 @@
                         </div>
                     </div>
 
-                    <div class="contact-form">
+                    <div class="contact-form to-slide-in-right">
                         <form action="#">
-                            <div class="form-group">
+                            <div class="form-group to-fade-in-down delay-1">
                                 <input type="text" class="form-control" placeholder="Your Name" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group to-fade-in-down delay-2">
                                 <input type="email" class="form-control" placeholder="Your Email" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group to-fade-in-down delay-3">
                                 <textarea class="form-control" placeholder="Your Message" required></textarea>
                             </div>
                             <button type="submit" class="btn" style="width: 100%;">Send Message</button>
@@ -728,5 +857,55 @@
         </div>
     </footer>
 
+    <!-- Minimal Scroll Trigger Script -->
+    <script>
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.2 // Trigger when 20% of the element is visible
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Start main reveal
+                    entry.target.classList.add('revealed');
+
+                    // Start staggered card animations if present
+                    const serviceCards = entry.target.querySelectorAll('.service-card');
+                    serviceCards.forEach(card => card.classList.add('start-scale'));
+
+                    const categoryCards = entry.target.querySelectorAll('.category-card');
+                    categoryCards.forEach(card => card.classList.add('start-scale'));
+
+                    const statItems = entry.target.querySelectorAll('.stat-item');
+                    statItems.forEach(item => item.classList.add('start-count'));
+
+                    const contactCards = entry.target.querySelectorAll('.contact-card.to-slide-in-left');
+                    contactCards.forEach(card => card.classList.add('start-reveal'));
+                    
+                    const contactForm = entry.target.querySelector('.contact-form.to-slide-in-right');
+                    if(contactForm) contactForm.classList.add('start-reveal');
+
+                    const formGroups = entry.target.querySelectorAll('.form-group.to-fade-in-down');
+                    formGroups.forEach(group => group.classList.add('start-fade'));
+
+                    // Start specific inner element animations
+                    const leftSlide = entry.target.querySelector('.to-slide-in-left');
+                    if(leftSlide) leftSlide.classList.add('start-slide');
+                    const rightReveal = entry.target.querySelector('.to-fade-in-up');
+                    if(rightReveal) rightReveal.classList.add('start-reveal');
+
+                    observer.unobserve(entry.target); // Only trigger once
+                }
+            });
+        }, observerOptions);
+
+        // Apply observer to all elements meant to reveal
+        const reveals = document.querySelectorAll('.to-reveal');
+        reveals.forEach((reveal) => {
+            observer.observe(reveal);
+        });
+    </script>
 </body>
 </html>
