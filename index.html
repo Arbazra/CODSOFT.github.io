@@ -4,172 +4,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gains | Premium Fitness Club</title>
-    
-    <!-- Google Fonts for Modern Typography -->
+    <title>Gains | Elite Fitness</title>
+
+    <!-- Google Fonts: Montserrat for a bold, modern look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
-        /* CSS Variables for consistent theming */
+        /* --- CSS Variables --- */
         :root {
-            --primary-color: #ff4a36; /* Energetic Orange/Red */
-            --primary-hover: #e03a27;
-            --bg-dark: #0a0a0a;
-            --bg-card: #181818;
-            --text-light: #ffffff;
-            --text-muted: #a0a0a0;
-            --transition: all 0.3s ease;
+            --primary: #FF4E3E;       /* Vibrant Coral/Red */
+            --primary-dark: #cc3b2d;
+            --bg-main: #0B0B0E;       /* Deep dark background */
+            --bg-surface: #16161A;    /* Card background */
+            --bg-surface-light: #212126; 
+            --text-main: #FFFFFF;
+            --text-muted: #9BA1A6;
+            --font-main: 'Montserrat', sans-serif;
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        /* Basic Reset */
+        /* --- Reset & Base Styles --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
+            font-family: var(--font-main);
+            background-color: var(--bg-main);
+            color: var(--text-main);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* Header & Navigation */
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        /* --- Reusable Components --- */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .section-title span {
+            color: var(--primary);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            padding: 14px 32px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 78, 62, 0.3);
+        }
+
+        /* --- Navigation --- */
         header {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
-            background: rgba(10, 10, 10, 0.9);
+            padding: 20px 0;
+            background: rgba(11, 11, 14, 0.95);
             backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 5%;
-            max-width: 1400px;
-            margin: 0 auto;
         }
 
-        .logo p {
-            font-size: 28px;
-            font-weight: 800;
-            letter-spacing: 2px;
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
             text-transform: uppercase;
-            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .bar a {
-            text-decoration: none;
-            color: var(--text-light);
-            margin-left: 30px;
+        .logo i {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.85rem;
             font-weight: 600;
-            font-size: 14px;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
             transition: var(--transition);
         }
 
-        .bar a:hover {
-            color: var(--primary-color);
+        .nav-links a:hover {
+            color: var(--primary);
         }
 
-        /* Hero Section (con1) */
+        /* --- Hero Section --- */
         .hero {
             height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 0 5%;
-            /* High quality Unsplash placeholder for gym background */
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), 
-                        url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470') center/cover no-repeat;
+            position: relative;
+            background: linear-gradient(to right, rgba(11,11,14,0.9) 20%, rgba(11,11,14,0.4) 100%),
+                        url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2000') center/cover no-repeat;
         }
 
-        .hero-tags {
-            margin-bottom: 20px;
+        .hero-content {
+            max-width: 700px;
         }
 
-        .hero-tags span {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 8px 16px;
-            margin: 0 5px;
+        .badge {
+            display: inline-block;
+            background: rgba(255, 78, 62, 0.1);
+            color: var(--primary);
+            padding: 6px 14px;
             border-radius: 50px;
-            font-size: 12px;
+            font-size: 0.8rem;
             font-weight: 600;
-            letter-spacing: 1px;
-            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 78, 62, 0.3);
         }
 
         .hero h1 {
-            font-size: clamp(2rem, 5vw, 4rem);
-            font-weight: 800;
-            max-width: 800px;
-            margin-bottom: 30px;
-            line-height: 1.2;
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 25px;
             text-transform: uppercase;
         }
 
-        .btn {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: var(--transition);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 500px;
         }
 
-        .btn:hover {
-            background: var(--primary-hover);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 74, 54, 0.3);
-        }
-
-        /* Shared Section Styles */
-        section {
-            padding: 100px 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 36px;
-            font-weight: 800;
-            margin-bottom: 50px;
-            text-transform: uppercase;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: "";
-            display: block;
-            width: 60px;
-            height: 4px;
-            background: var(--primary-color);
-            margin: 15px auto 0;
-            border-radius: 2px;
-        }
-
-        /* Services Grid (con3) */
+        /* --- Services Section --- */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -177,51 +202,106 @@
         }
 
         .service-card {
-            background: var(--bg-card);
-            padding: 40px 30px;
-            border-radius: 10px;
+            background: var(--bg-surface);
+            padding: 50px 30px;
+            border-radius: 12px;
             text-align: center;
+            border: 1px solid rgba(255,255,255,0.03);
             transition: var(--transition);
-            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transition: var(--transition);
+            transform-origin: left;
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            border-color: var(--primary-color);
+            background: var(--bg-surface-light);
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
         }
 
         .service-card i {
-            font-size: 40px;
-            color: var(--primary-color);
+            font-size: 3rem;
+            color: var(--primary);
             margin-bottom: 20px;
         }
 
         .service-card h3 {
-            font-size: 20px;
-            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* About Section */
-        .about-text {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
+        .service-card p {
             color: var(--text-muted);
-            font-size: 18px;
+            font-size: 0.95rem;
         }
 
-        /* Categories (con2) */
+        /* --- About Section (Split Layout) --- */
+        .about {
+            background: var(--bg-surface);
+        }
+
+        .about-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-img {
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .about-img::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            transform: translate(15px, 15px);
+            z-index: -1;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .about-content p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        /* --- Categories Section --- */
         .categories-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
         }
 
         .category-card {
             position: relative;
-            border-radius: 10px;
+            height: 450px;
+            border-radius: 12px;
             overflow: hidden;
-            height: 400px;
             cursor: pointer;
         }
 
@@ -229,250 +309,424 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: var(--transition);
+            transition: transform 0.6s ease;
+        }
+
+        .category-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(11,11,14,1) 0%, rgba(11,11,14,0) 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
         }
 
         .category-card:hover img {
-            transform: scale(1.1);
-        }
-
-        .category-card .overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 30px 20px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            transform: scale(1.08);
         }
 
         .category-card h3 {
-            font-size: 24px;
+            font-size: 1.5rem;
             font-weight: 800;
             text-transform: uppercase;
+            margin-bottom: 5px;
+            transform: translateY(10px);
+            transition: var(--transition);
         }
 
-        /* Stats (con4) */
-        .stats-section {
-            background: var(--bg-card);
+        .category-card p {
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: var(--transition);
+        }
+
+        .category-card:hover h3 {
+            transform: translateY(0);
+        }
+
+        .category-card:hover p {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Stats Section --- */
+        .stats {
+            background: linear-gradient(rgba(11, 11, 14, 0.9), rgba(11, 11, 14, 0.9)), 
+                        url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=2000') center/cover fixed;
             border-top: 1px solid rgba(255,255,255,0.05);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 30px;
             text-align: center;
         }
 
-        .stat-item i {
-            font-size: 36px;
-            color: var(--primary-color);
-            margin-bottom: 15px;
+        .stat-item h4 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 10px;
         }
 
-        .stat-item .number {
-            font-size: 36px;
-            font-weight: 800;
-            margin-bottom: 5px;
-        }
-
-        .stat-item .label {
-            color: var(--text-muted);
-            font-size: 14px;
+        .stat-item p {
+            font-size: 0.9rem;
             font-weight: 600;
-            letter-spacing: 1px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-main);
         }
 
-        /* Contact */
+        /* --- Contact Section --- */
+        .contact {
+            background: var(--bg-surface);
+        }
+
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
         .contact-card {
-            background: var(--bg-card);
-            padding: 40px 20px;
-            text-align: center;
-            border-radius: 10px;
+            background: var(--bg-main);
+            padding: 30px;
+            border-radius: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            border: 1px solid rgba(255,255,255,0.03);
         }
 
         .contact-card i {
-            font-size: 30px;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            background: rgba(255, 74, 54, 0.1);
-            padding: 20px;
-            border-radius: 50%;
+            font-size: 1.5rem;
+            color: var(--primary);
+            background: rgba(255, 78, 62, 0.1);
+            padding: 15px;
+            border-radius: 8px;
         }
 
         .contact-card h4 {
-            font-size: 18px;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
         }
 
         .contact-card p {
             color: var(--text-muted);
+            font-size: 0.9rem;
         }
 
-        /* Footer */
+        /* Modern Form */
+        .contact-form {
+            background: var(--bg-main);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            background: var(--bg-surface);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 6px;
+            color: var(--text-main);
+            font-family: var(--font-main);
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: var(--bg-surface-light);
+        }
+
+        textarea.form-control {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* --- Footer --- */
         footer {
+            background: #050507;
+            padding: 40px 0;
             text-align: center;
-            padding: 30px;
-            background: #050505;
-            color: var(--text-muted);
-            font-size: 14px;
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                gap: 15px;
-                padding: 15px;
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer .socials {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        footer .socials a {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-surface);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        footer .socials a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .about-wrapper, .contact-grid {
+                grid-template-columns: 1fr;
             }
-            .bar a {
-                margin: 0 10px;
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* In a real scenario, implement a hamburger menu here */
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .categories-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 
 <body>
+
     <header>
-        <nav>
-            <div class="logo">
-                <p>Gains</p>
-            </div>
-            <div class="bar">
-                <a href="#">Home</a>
-                <a href="#about">About Us</a>
-                <a href="#categories">Training</a>
-                <a href="#contact">Contact</a>
-            </div>
-        </nav>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fa-solid fa-fire"></i> Gains
+                </div>
+                <div class="nav-links">
+                    <a href="#">Home</a>
+                    <a href="#services">Services</a>
+                    <a href="#about">About</a>
+                    <a href="#training">Training</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#join" class="btn" style="padding: 10px 24px; font-size: 0.8rem;">Join Now</a>
+                </div>
+            </nav>
+        </div>
     </header>
 
     <main>
         <!-- Hero Section -->
         <section class="hero">
-            <div class="hero-tags">
-                <span>THE BEST</span>
-                <span>FITNESS CLUB</span>
+            <div class="container">
+                <div class="hero-content">
+                    <span class="badge">The Best Fitness Club</span>
+                    <h1>Achieve The <span>Impossible</span></h1>
+                    <p>Because ordinary was never your style. Push your limits, redefine your boundaries, and build the ultimate version of yourself.</p>
+                    <button class="btn">Start Your Journey</button>
+                </div>
             </div>
-            <h1>Achieve the Impossible Because Ordinary Was Never Your Style.</h1>
-            <button class="btn">Join Now</button>
         </section>
 
         <!-- Services Section -->
-        <section id="services">
-            <h2 class="section-title">Our Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <i class="fa-solid fa-dumbbell"></i>
-                    <h3>High Quality Equipment</h3>
+        <section id="services" class="section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Our <span>Services</span></h2>
+                    <p style="color: var(--text-muted);">Everything you need to reach your peak performance.</p>
                 </div>
-                <div class="service-card">
-                    <i class="fa-solid fa-building-user"></i>
-                    <h3>Well Designed Facility</h3>
-                </div>
-                <div class="service-card">
-                    <i class="fa-solid fa-user-ninja"></i>
-                    <h3>Personal Training</h3>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fa-solid fa-dumbbell"></i>
+                        <h3>Elite Equipment</h3>
+                        <p>Train with industry-leading machinery and free weights curated for serious athletes.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <h3>Premium Space</h3>
+                        <p>A sprawling, expertly designed facility offering dedicated zones for all training styles.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fa-solid fa-user-astronaut"></i>
+                        <h3>Expert Training</h3>
+                        <p>Work 1-on-1 with certified coaches to build a plan that guarantees results.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about">
-            <h2 class="section-title">About Us</h2>
-            <p class="about-text">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam eaque aspernatur accusantium placeat, sed
-                sunt. Aliquam, minima recusandae. Tenetur quos error aspernatur impedit totam corrupti ipsam cupiditate
-                optio. Officiis, repellat.
-            </p>
+        <section id="about" class="section-padding about">
+            <div class="container">
+                <div class="about-wrapper">
+                    <div class="about-img">
+                        <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=1000" alt="Gym Workout">
+                    </div>
+                    <div class="about-content">
+                        <h2>We Are <span>Gains</span></h2>
+                        <p>Founded on the belief that everyone has untapped potential, Gains is more than just a gym—it's a community of dedicated individuals striving for greatness.</p>
+                        <p>Our facility offers state-of-the-art equipment, unparalleled coaching, and an atmosphere that demands excellence. Whether you're stepping into a gym for the first time or prepping for a competition, we have your back.</p>
+                        <button class="btn">Learn More</button>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <!-- Categories Section -->
-        <section id="categories">
-            <h2 class="section-title">Categories</h2>
-            <div class="categories-grid">
-                <div class="category-card">
-                    <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=1470" alt="Bodybuilding">
-                    <div class="overlay">
-                        <h3>Bodybuilding</h3>
-                    </div>
+        <!-- Categories / Training Section -->
+        <section id="training" class="section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Training <span>Categories</span></h2>
                 </div>
-                <div class="category-card">
-                    <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1470" alt="Power Lifting">
-                    <div class="overlay">
-                        <h3>Power Lifting</h3>
+                
+                <div class="categories-grid">
+                    <div class="category-card">
+                        <img src="https://images.unsplash.com/photo-1534304918237-727c65306648?q=80&w=1000" alt="Bodybuilding">
+                        <div class="category-overlay">
+                            <h3>Bodybuilding</h3>
+                            <p>Sculpt & Define <i class="fa-solid fa-arrow-right"></i></p>
+                        </div>
                     </div>
-                </div>
-                <div class="category-card">
-                    <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?q=80&w=1469" alt="Calisthenics">
-                    <div class="overlay">
-                        <h3>Calisthenics</h3>
+                    <div class="category-card">
+                        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1000" alt="Power Lifting">
+                        <div class="category-overlay">
+                            <h3>Power Lifting</h3>
+                            <p>Raw Strength <i class="fa-solid fa-arrow-right"></i></p>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?q=80&w=1000" alt="Calisthenics">
+                        <div class="category-overlay">
+                            <h3>Calisthenics</h3>
+                            <p>Bodyweight Mastery <i class="fa-solid fa-arrow-right"></i></p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Stats Section -->
-        <section class="stats-section">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <i class="fa-solid fa-people-group"></i>
-                    <p class="number">500+</p>
-                    <p class="label">MEMBERS</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fa-solid fa-user-tie"></i>
-                    <p class="number">50+</p>
-                    <p class="label">TRAINERS</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fa-solid fa-book"></i>
-                    <p class="number">70+</p>
-                    <p class="label">CLASSES</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fa-solid fa-headset"></i>
-                    <p class="number">30+</p>
-                    <p class="label">PROGRAMS</p>
+        <section class="section-padding stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h4>500+</h4>
+                        <p>Active Members</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>50+</h4>
+                        <p>Pro Trainers</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>70+</h4>
+                        <p>Weekly Classes</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>30+</h4>
+                        <p>Training Programs</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact">
-            <h2 class="section-title">Contact</h2>
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <h4>Location</h4>
-                    <p>123 Fitness Avenue, NY</p>
+        <section id="contact" class="section-padding contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Get In <span>Touch</span></h2>
                 </div>
-                <div class="contact-card">
-                    <i class="fa-solid fa-phone"></i>
-                    <h4>Call Us</h4>
-                    <p>+1 (555) 123-4567</p>
-                </div>
-                <div class="contact-card">
-                    <i class="fa-solid fa-envelope"></i>
-                    <h4>Email Us</h4>
-                    <p>join@gains.com</p>
+
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="contact-card">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <p>123 Iron Avenue, NY 10012</p>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                            <i class="fa-solid fa-phone"></i>
+                            <div>
+                                <h4>Call Us</h4>
+                                <p>+1 (555) 987-6543</p>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                            <i class="fa-solid fa-envelope"></i>
+                            <div>
+                                <h4>Email Us</h4>
+                                <p>support@gainsfitness.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form">
+                        <form action="#">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
-
     </main>
 
     <footer>
-        <p>All &copy; copyrights are reserved | Gains Fitness Club</p>
+        <div class="container">
+            <div class="logo" style="justify-content: center; margin-bottom: 20px;">
+                <i class="fa-solid fa-fire"></i> Gains
+            </div>
+            <p>&copy; 2026 Gains Fitness Club. All Rights Reserved.</p>
+            <div class="socials">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
     </footer>
 
 </body>
-
 </html>
